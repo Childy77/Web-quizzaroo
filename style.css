@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid blue;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+p {
+
+    font-size: 1.5rem;
+}
+
+button {
+    outline: none;
+    font-size: 1.5rem;
+}
+
+.outer-container {
+    padding: 10px;
+}
+
+.top-menu {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+}
