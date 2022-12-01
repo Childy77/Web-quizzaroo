@@ -6,12 +6,13 @@ var interval
 var secondsLeft = 60
 var timerEl = document.querySelector("#timer")
 var qTitleEl = document.querySelector("#q-title")
-var qCounter = 0
+var questionIndex = 0
 var answer1El = document.querySelector("#answer1")
 var answer2El = document.querySelector("#answer2")
 var answer3El = document.querySelector("#answer3")
 var answer4El = document.querySelector("#answer4")
-var questionIndex = 0
+var quizComplete = document.querySelector(".quiz-complete")
+var highScores = document.querySelector(".high-scores")
 
 
 const questions = [
@@ -62,12 +63,23 @@ questionsEl.classList.remove("hide")
 nextQuestion()
 }
 
+function endGame() {
+    quizComplete.classList.remove("hide")
+    questionsEl.classList.add("hide")
+    
+    }
+
 function nextQuestion() {
-qTitleEl.textContent = questions[qCounter].question
-answer1El.textContent = questions[qCounter].answers[0].text
-answer2El.textContent = questions[qCounter].answers[1].text
-answer3El.textContent = questions[qCounter].answers[2].text
-answer4El.textContent = questions[qCounter].answers[3].text
+qTitleEl.textContent = questions[questionIndex].question
+answer1El.textContent = questions[questionIndex].answers[0].text
+answer2El.textContent = questions[questionIndex].answers[1].text
+answer3El.textContent = questions[questionIndex].answers[2].text
+answer4El.textContent = questions[questionIndex].answers[3].text
+
+answer1El.correct = questions[questionIndex].answers[0].correct
+answer2El.correct = questions[questionIndex].answers[1].correct
+answer3El.correct = questions[questionIndex].answers[2].correct
+answer4El.correct = questions[questionIndex].answers[3].correct
 
 answer1El.addEventListener("click", checkQuestion)
 answer2El.addEventListener("click", checkQuestion)
@@ -90,30 +102,39 @@ timerEl.textContent = "Time: 00:" + secondsLeft
 }, 1000)
 }
  function checkQuestion(event) {
-    // console.log(clickAnswer.target.textContent);
+    console.log(event);
+
     // var correctAnswer = 
     var userAnswer = event.target.textContent
     var currentQuestion = questions[questionIndex]
-    // console.log(currentQuestion.answers, "CurQ.answers")
-    var answers = currentQuestion.answers[1].text
+    console.log(event.target.correct)
+    var answers = currentQuestion.answers[questionIndex].text
     
-    if (userAnswer.match(answers)) {
-        return
-        
-        // questionIndex++; return nextQuestion();
-
+    if (event.target.correct) {
+        // When correct answer is chosen
+        if (questionIndex == 3) {
+            // last question
+            endGame();
+        }
+        else {
+            // game continuing
+        questionIndex++; 
+        nextQuestion();
+        }
     }
-
-    
-    
-
-    if (userAnswer.value !== questions[questionIndex].answers[1]) {
+    else { 
+        // when wrong answer is chosen
         secondsLeft -= 15
-
+        // When timer runs out
+        if (secondsLeft <= 0) {
+            endGame()
+        }
     }
 
-    questionIndex++
     
+    
+
+
 
  }
 
