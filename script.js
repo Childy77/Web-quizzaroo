@@ -29,8 +29,8 @@ const questions = [
         question: "Which is not an element?",
         answers: [
             {text: "main", correct: false},
-            {text: "header", correct: false},
             {text: "google", correct: true},
+            {text: "header", correct: false},
             {text: "section", correct: false},
         ]
     },    
@@ -38,16 +38,16 @@ const questions = [
         question: "What is it called to store multiple values in a single variable?",
         answers: [
             {text: "String", correct: false},
-            {text: "Function", correct: false},
-            {text: "Variable", correct: false},
             {text: "Array", correct: true},
+            {text: "Variable", correct: false},
+            {text: "function", correct: false},
         ]
     },    
     {
         question: "What is and API?",
         answers: [
-            {text: "Application Programming Interfaces", correct: true},
             {text: "All points in", correct: false},
+            {text: "Application Programming Interfaces", correct: true},
             {text: "Any person intersted", correct: false},
             {text: "Array points inward", correct: false},
         ]
