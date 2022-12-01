@@ -55,12 +55,12 @@ li {
     flex-direction: column;
     justify-content: flex-start;
     text-align: center;
-    display: none;
+    
     
 }
 
 .quiz-start {
-    display: block;
+
     margin-top: 10vh;
     background-color: beige;
     margin-left: 10%;
@@ -71,19 +71,21 @@ li {
 }
 
 .quiz-start button  {
-    display: block;
+
     margin: 0 auto;
 }
 
 main {
-    display: block;
+
     margin-top: 10vh;
     background-color: beige;
     margin-left: 10%;
     margin-right: 10%;
 }
-
-.questions {
+.hide {
+    display: none;
+}
+/* .questions {
     display: none;
 }
 
@@ -92,8 +94,8 @@ main {
 }
 
 .high-scores {
-    display: block;
-}
+    display: none;
+} */
 
 .high-scores ol {
     overflow-y: scroll;
