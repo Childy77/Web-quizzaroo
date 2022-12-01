@@ -3,7 +3,7 @@ var innerC = document.querySelector(".inner-container");
 var startButton = document.querySelector("#start-button");
 var questionsEl = document.querySelector(".questions")
 var interval
-var secondsLeft = 25
+var secondsLeft = 60
 var timerEl = document.querySelector("#timer")
 var qTitleEl = document.querySelector("#q-title")
 var qCounter = 0
@@ -92,21 +92,31 @@ timerEl.textContent = "Time: 00:" + secondsLeft
  function checkQuestion(event) {
     // console.log(clickAnswer.target.textContent);
     // var correctAnswer = 
-    var userAnswer = event.target
+    var userAnswer = event.target.textContent
     var currentQuestion = questions[questionIndex]
-    var choice = currentQuestion.choices[i]
-    if (userAnswer.matches(choice)) {
+    // console.log(currentQuestion.answers, "CurQ.answers")
+    var answers = currentQuestion.answers[1].text
+    
+    if (userAnswer.match(answers)) {
         return
+        
+        // questionIndex++; return nextQuestion();
+
     }
+
+    
+    
 
     if (userAnswer.value !== questions[questionIndex].answers[1]) {
         secondsLeft -= 15
+
     }
 
     questionIndex++
-
+    
 
  }
+
 
  function gameOver() {
     console.log("Game Over");
